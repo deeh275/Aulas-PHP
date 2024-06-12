@@ -74,4 +74,5 @@ if($maior_idade || $autorizacao_pais) {
 } else {
     echo "Acesso negado. <br>";
 }
+echo "Acesso negado. <br>";
 
