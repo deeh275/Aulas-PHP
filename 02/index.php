@@ -94,4 +94,6 @@ $peso = 200;
 $conta = $peso/($altura * $altura);
 
 echo "O imc do leandro é $conta <br>";
+
+echo "O leandro é jão $conta <br>";
 ?>
