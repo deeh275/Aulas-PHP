@@ -194,6 +194,22 @@ echo "<br>";
 
 #desafio3
 // Sequência Fibonacci for
+
+$anterior = 0;
+$atual = 1;
+$termos = 20;
+
+echo "$anterior $atual ";
+// Solução com for
+for($i = 2; $i <= $termos; $i++) {
+    $proximo = $anterior + $atual;
+    echo "$proximo ";
+    $anterior = $atual;
+    $atual = $proximo;
+}
+
+echo "<br>";
+
 echo "Sequência Fibonacci for <br>";
 
 $num_seguencia = 10;
@@ -213,6 +229,20 @@ for ($i = 1; $i <= $num_seguencia; $i++) {
 echo "<br>";
  
 // Sequência Fibonacci while
+$anterior = 0;
+$atual = 1;
+$termos = 20;
+$i = 2;
+
+while( $i <= $termos ) {
+    $proximo = $anterior + $atual;
+    echo "$proximo ";
+    $anterior = $atual;
+    $atual = $proximo;
+    $i++;
+}
+
+
 echo "Sequência Fibonacci while <br>";    
 
 $num_seguencia = 10;
