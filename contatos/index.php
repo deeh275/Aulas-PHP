@@ -22,6 +22,35 @@ $contatos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p><?php echo $contato['email']; ?> </p>
         <hr>
     <?php endforeach; ?>
+
+
+<!--     
+
+function getConexaoBD() {
+    $host = 'localhost';
+    $bd = 'contatos';
+    $usuario = 'root';
+    $senha = "";
+
+    try {
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        return $conexao;
+    } catch (PDOException $e) {
+        echo 'Conexão com o banco falhou!' . $e->getMessage();
+        exit;
+    }
+}
+
+function getContatos() {
+    $conn = getConexaoBD();
+    $stmt = $conn->prepare("SELECT * FROM contatos_info");
+    $stmt->execute();
+    $contatos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $contatos;
+}
+
+$contatos = getContatos(); -->
+
 </body>
 </html>
 
