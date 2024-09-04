@@ -26,27 +26,27 @@ class DatabaseRepository {
         $pdo = self::connect();
         $sql = "INSERT INTO itens_compra (nome_produto, quantidade) VALUES (:nome_produto, :quantidade)";
         $stmt = $pdo->prepare($sql);
-        return $stmt->execute(['nome_produto' => $nome_produto, 'quantidade' => $quantidade]);
+    
+        try {
+            return $stmt->execute([
+                'nome_produto' => $nome_produto,
+                'quantidade' => $quantidade,
+            ]);
+        } catch (PDOException $e) {
+            return false;
+        }
     }
-
-    public static function updateItem($id, $nome_produto, $quantidade, $comprado) {
-        $pdo = self::connect();
-        $sql = "UPDATE itens_compra SET nome_produto=:nome_produto, quantidade=:quantidade, comprado=:comprado
-                WHERE id=:id";
-        $stmt = $pdo->prepare($sql);
-
-        return $stmt->execute([
-            'nome_produto' => $nome_produto,
-            'quantidade' => $quantidade,
-            'comprado' => $comprado,
-            'id' => $id
-        ]);
-    }
-
     public static function deleteItem($id) {
         $pdo = self::connect();
         $sql = "DELETE FROM itens_compra WHERE id = :id";
         $stmt = $pdo->prepare($sql);        
         return $stmt->execute(['id' => $id]);
+    }
+
+    public static function comprarItem($id){
+        $pdo = self::connect();
+        $sql = "UPDATE itens_compra SET comprado = comprado + 1 WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute(['id'=> $id]);
     }
 }
